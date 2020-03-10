@@ -3,7 +3,6 @@ import * as React from 'react';
 import styles from './WpartTodaysTopi.module.scss';
 import { IWpartTodaysTopiProps } from './IWpartTodaysTopiProps';
 import { escape } from '@microsoft/sp-lodash-subset';
-import Confetti from 'react-confetti'
 import { default as pnp, ItemAddResult, Web } from "sp-pnp-js";
 ////#endregion
 
@@ -18,14 +17,14 @@ export default class WpartTodaysTopi extends React.Component<IWpartTodaysTopiPro
       pageContext: this.props.pageContext,
       siteurl: this.props.siteurl,
       ProjectArray: [],
-    }
+    };
   }
 
 
-  componentDidMount() {
+  public componentDidMount() {
     this.fetchProjects();
   }
-  fetchProjects() {
+  public fetchProjects() {
     var today = new Date;
     var date = today.getDay();
     var strToday = this.getcurrenday(date + 1);
@@ -42,7 +41,7 @@ export default class WpartTodaysTopi extends React.Component<IWpartTodaysTopiPro
             URL: items[i].URL,
             NextTopic: items[i].NextTopic,
             GitHubLink: items[i].GitHubLink,
-          }
+          };
           if (items[i].Title == strToday) {
             TempComplteDropDown.push(NewData);
           }
@@ -56,8 +55,8 @@ export default class WpartTodaysTopi extends React.Component<IWpartTodaysTopiPro
 
 
   public render(): React.ReactElement<IWpartTodaysTopiProps> {
-    var SubProjectArrays = this.state.ProjectArray.map(function (item, i) {
-      return <div>
+    var SubProjectArrays = this.state.ProjectArray.map((item, i) => {
+      return (<div>
         <div>
           <h4>{item["Day"]}</h4>
           <p>
@@ -75,22 +74,15 @@ export default class WpartTodaysTopi extends React.Component<IWpartTodaysTopiPro
           <div className={styles.innerdiv}>
             <a  target="_blank" className={styles.achors} href={item["NextTopic"]}> Nex Topic</a>
           </div>
-
-
-
-        </div>
-
-
-      </div>
+             </div>
+ </div>);
     });
     return (
       <div className={styles.wpartTodaysTopi}>
         <div className={styles.container}>
           <div className={styles.row}>
             {SubProjectArrays}
-            <Confetti
-
-            />
+           
 
           </div>
         </div>
@@ -98,7 +90,7 @@ export default class WpartTodaysTopi extends React.Component<IWpartTodaysTopiPro
     );
   }
 
-  getcurrenday(daynumber) {
+  public getcurrenday(daynumber) {
     var result = "";
     switch (daynumber) {
       case 1:
