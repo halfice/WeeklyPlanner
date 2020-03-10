@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "wpart-todays-topi-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wpartTodaysTopi/WpartTodaysTopiWebPart.js",
+          "manifest": "./src/webparts/wpartTodaysTopi/WpartTodaysTopiWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WpartTodaysTopiWebPartStrings": "lib/webparts/wpartTodaysTopi/loc/{locale}.js"
+  }
+}
